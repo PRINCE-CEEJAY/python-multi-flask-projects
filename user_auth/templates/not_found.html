@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title%} NO USER {% endblock %}
+
+{% block body %}
+<div>
+    <h1>You are not registered yet, click the button below to register</h1>
+    <a href="{{url_for('registration_screen')}}">Register</a>
+</div>
+
+ {% endblock %}

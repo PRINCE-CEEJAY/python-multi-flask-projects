@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    color: whitesmoke;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+a {
+    font-weight: bold;
+    color: white;
+
+}
+
+.users {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    width: 3500px;
+    height: 300px;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

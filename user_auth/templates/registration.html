@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title%} REGISTRATION SCREEN {% endblock %}
+
+{% block body %}
+<div>
+    <h2> Welcome to the Registration Screen, please fill in the form below </h2>
+    <form action="{{url_for('register')}}" method="post" class="reg_form">
+        <input type="text" name="fullname" placeholder="Enter your Full Name" required/>
+        <input type="email" name="email" placeholder="Enter your valid email" required/>
+        <input type="password" name="password" placeholder="Enter your Password" required/>
+        <button type="submit">Register</button>  
+    </form>
+</div>
+ {% endblock %}

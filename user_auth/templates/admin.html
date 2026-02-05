@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title%} WELCOME CJ, HERE IS YOUR PANEL {% endblock %}
+
+{% block body %}
+<div>
+    <h1>Registered Users</h1>
+    <div class="users">
+        {% for user in registered_users %}           
+            <h3>ID: {{ user['id'] }}</h3>
+            <h1>Fullname: {user['fullname']}</h1>
+            <h1>Email: {user['email']}</h1>
+        {% endfor %}
+
+    </div>
+        
+    
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title%} GUEST HOMEPAGE {% endblock %}
+
+{% block body %}
+<div class="home">
+    <a href="{{url_for('admin')}}" >ADMIN PANEL</a>
+    <a href="{{url_for('login_screen')}}" >Click here to Login</a>
+    <a href="{{url_for('registration_screen')}}" >Or register to become a member</a>
+</div>
+{% endblock %}

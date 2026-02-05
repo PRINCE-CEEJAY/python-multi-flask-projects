@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
+from flask_cors import CORS
 
 
 api = Flask(__name__)
@@ -8,6 +9,20 @@ api.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///food.db"
 api.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(api)
+CORS(api, methods = ["GET", "POST", "PUT", "PATCH"]) 
+from flask_cors import CORS
+
+
+api = Flask(__name__)
+api.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///food.db"
+api.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(api)
+CORS(api, methods = ["GET", "POST", "UPDATE"])
+CORS(api, methods=["GET", "POST", "PUT", "PATCH"]) 
+# Browsers can only do safe operations here
+# Delete is admin-controlled inside backend logic
+
 
 class Food(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -52,7 +67,7 @@ def add_food():
     price = int(data.get("price"))
 
     if not category or not title or not price:
-        return jsonify({"message":"Added no empty field allowed"}), 404
+        return jsonify({"message":"No empty field allowed"}), 404
     else:
         new_food = Food(category=category, title=title, price=price)
         try:
