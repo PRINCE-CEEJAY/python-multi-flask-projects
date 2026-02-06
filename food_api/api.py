@@ -105,7 +105,7 @@ def delete_food(id):
         db.session.delete(food)
         db.session.commit()
         return jsonify({"message":"food deleted successfully"}), 200
-      
+        
     
 if __name__ == "__main__":
     with api.app_context():
