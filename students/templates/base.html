@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"/>
+</head>
+<body class="min-h-screen bg-gradient-to-tr from-blue-950/90 via-green-800/80 to blue-900/90 text-white">
+    <nav class="min-w-screen flex justify-between items-center bg-slate-950 text-white font-bold">
+        <div class="w-[40%]">
+            <h1 class="hidden md:flex text-2xl font-bold">USER AUTHENTICATION SYSTEM</h1>
+        </div>
+        <div class="block h-fit lg:flex lg:h-fit justify-evenly w-[60%]">
+            <a class="list-none decoration-none font-bolder opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-700 ease" href="{{url_for('index')}}">Home</a>
+    
+            <a class="list-none decoration-none font-bolder opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-700 ease" href="{{url_for('login')}}">Login</a>
+    
+            <a class="list-none decoration-none font-bolder opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-700 ease" href="{{url_for('register')}}">Register</a>
+            
+            <a class="list-none decoration-none font-bolder opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-700 ease" href="{{url_for('admin')}}">Admin Panel</a>
+        </div>
+    </nav>
+    <main class="flex flex-col justify-center items-center h-screen">
+        {% block body %} {% endblock %}
+    </main>
+</body>
+</html>

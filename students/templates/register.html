@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} REGISTRATION PAGE {% endblock %}
+{% block body %}
+<div class="flex flex-col justify-center items-center">
+    <h1 class="font-bold text-xl text-slate-300 animate-pulse">REGISTER</h1>
+    <form action="{{url_for('register')}}" method="post" class="flex flex-col justify-center items-center w-md space-y-2">
+        <div class="flex flex-col space-y-2 w-full font-bold">
+            <label htmlFor="username">Username:</label>
+            <input class="h-10 border border-slate-900 p-2 rounded-md" type="text" name="username" placeholder="Example213" id="username"/>
+        </div>
+        
+        <div class="flex flex-col space-y-2 w-full font-bold">
+            <label htmlFor="email">Email</label>
+            <input class="h-10 border border-slate-900 p-2 rounded-md" type="email" name="email" placeholder="example@gmail.com" id="email"/>
+        </div>    
+    
+        <div class="flex flex-col space-y-2 w-full font-bold">
+            <label htmlFor="password">Password</label>
+            <input class="h-10 border border-slate-900 p-2 rounded-md" type="password" name="password" placeholder="***************" id="password"/>
+        </div>
+    
+        <div class="flex flex-col space-y-2 w-full font-bold">
+            <label htmlFor="confirm">Confirm Password</label>
+            <input class="h-10 border border-slate-900 p-2 rounded-md" type="password" name="confirm" placeholder="***************" id="confirm"/>
+        </div>
+        <button class="px-3 py-1 bg-green-800 opacity-80 hover:opacity-100 font-bold cursor-pointer rounded-lg mt-2 w-full">Register</button>
+    </form>
+</div>
+{% endblock %}
