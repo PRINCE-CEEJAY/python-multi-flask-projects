@@ -1,12 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent, useEffect } from 'react'
+import axios from 'axios'
+import type { PRODUCT } from '../Types'
 
-type PRODUCT = {
-    name: string,
-    price: number,
-    category: string,
-    image: File | null,
-    quantity: number
-}
 
 export default function AddProduct() {
 
@@ -17,6 +12,7 @@ export default function AddProduct() {
         image: null,
         quantity: 0
     })
+    const [loading, setLoading] = useState(false)
 
     const [preview, setPreview] = useState<string | null>(null)
 
@@ -65,11 +61,39 @@ export default function AddProduct() {
     }
 
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setLoading(true)
 
-        console.log(product)
+    const RECEIVER_URL = "http://127.0.0.1:5000/products";
+
+    const formData = new FormData()
+
+    formData.append("name", product.name)
+    formData.append("price", product.price.toString())
+    formData.append("category", product.category)
+    formData.append("quantity", product.quantity.toString())
+
+    if (product.image) {
+        formData.append("image", product.image)
     }
+
+    try {
+        const response = await axios.post(RECEIVER_URL, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
+
+        console.log("successfully added", response.data)
+        setLoading(false)
+
+    } catch (error) {
+        console.log(error)
+        setLoading(false)
+    }
+}
+
 
 
     return (
@@ -165,10 +189,11 @@ export default function AddProduct() {
 
 
                 <button
+                    disabled = {loading}
                     type='submit'
                     className='px-3 py-2 rounded-lg cursor-pointer opacity-85 hover:opacity-100 hover:scale-110 w-[50%] font-bold'
                 >
-                    Add Product
+                    {loading ? "Submitting ...": "Add Product"}
                 </button>
 
             </form>

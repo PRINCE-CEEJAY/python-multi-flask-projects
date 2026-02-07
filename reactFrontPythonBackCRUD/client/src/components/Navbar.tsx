@@ -1,4 +1,4 @@
-import  { HomeIcon, LogInIcon, PenIcon} from 'lucide-react'
+import  { HomeIcon, LogInIcon, PenIcon, ShoppingBasket} from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
@@ -17,10 +17,16 @@ export default function Navbar() {
     },
     {
       id: 3,
-      name: "Register",
+      name: "Add Product",
       icon: <PenIcon/>,
-      link: "/register"
+      link: "/products"
     },
+    {
+      id: 4,
+      name: "Shop",
+      icon: <ShoppingBasket/>,
+      link: "/shop"
+    }
   ]
   return (
     <div className='flex justify-evenly items-center bg-slate-900 w-screen'>

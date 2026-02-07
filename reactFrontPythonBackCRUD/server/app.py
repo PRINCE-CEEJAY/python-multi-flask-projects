@@ -43,7 +43,7 @@ class ProductModel(db.Model):
 
 # -------------------- HELPERS --------------------
 
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "ico", "gif"}
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
